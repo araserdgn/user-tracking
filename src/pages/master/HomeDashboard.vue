@@ -53,7 +53,7 @@ export default defineComponent({
     onMounted(() => {
       handleResize();
 
-      // Manual check for localStorage changes at a regular interval
+      
     });
 
     return {
