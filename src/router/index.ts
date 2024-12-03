@@ -27,6 +27,16 @@ const routes: Array<RouteRecordRaw> = [
                 component: () => import('../pages/UserPost.vue'),
 
             },
+            {
+                path:'/albums',
+                name:'albums',
+                component: () => import('../pages/UserAlbum.vue'),
+            },
+            {
+                path:'/albums/:albumId',
+                name:'albumPhotos',
+                component: () => import('../pages/UserAlbumPhotos.vue'),
+            }
         ]
     },
 

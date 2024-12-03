@@ -18,13 +18,13 @@ export const useGetUsers = defineStore("useGetUsers", {
           lat: string;
           lng: string;
         };
-        phone: string;
-        website: string;
-        company: {
-          name: string;
-          catchPhrase: string;
-          bs: string;
-        };
+      };
+      phone: string;
+      website: string;
+      company: {
+        name: string;
+        catchPhrase: string;
+        bs: string;
       };
     }[],
     userTodos: [] as {
@@ -41,16 +41,28 @@ export const useGetUsers = defineStore("useGetUsers", {
       email: string;
       body: string;
     }[],
+    userAlbums: [] as {
+      userId: number;
+      id: number;
+      title: string;
+    }[],
+    albumPhotos: [] as {
+      albumId: number;
+      id: number;
+      title: string;
+      url: string;
+      thumbnailUrl: string;
+    }[],
     openPostModal: false,
   }),
   getters: {},
   actions: {
-    async getSalesRepresentatives() {
+    async getUsers() {
       try {
         const response = await axios.get("https://jsonplaceholder.typicode.com/users");
         this.users = response.data;
       } catch {
-        // ElMessage.error("Failed to fetch users");  // Hata mesajı eklemek isterseniz buraya kullanabilirsiniz.
+        console.error("Failed to fetch users");
       }
     },
 
@@ -63,7 +75,7 @@ export const useGetUsers = defineStore("useGetUsers", {
         );
         this.userTodos = response.data;
       } catch {
-        // ElMessage.error("Failed to fetch user data");
+        console.error("Failed to fetch user data");
       }
     },
 
@@ -74,7 +86,7 @@ export const useGetUsers = defineStore("useGetUsers", {
         );
         this.userPost = response.data;
       } catch {
-        // ElMessage.error("Failed to fetch user posts");
+        console.error("Failed to fetch user posts");
       }
     },
 
@@ -87,8 +99,36 @@ export const useGetUsers = defineStore("useGetUsers", {
         );
         this.userPostComments = response.data;
       } catch {
-        // ElMessage.error("Failed to fetch post comments");
+        console.error("Failed to fetch post comments");
       }
+    },
+
+    async getUserAlbums() {
+      try {
+        const response = await axios.get("https://jsonplaceholder.typicode.com/albums");
+        this.userAlbums = response.data;
+      } catch {
+        console.error("Failed to fetch user albums");
+      }
+    },
+
+    async getAlbumPhotos(albumId: number) {
+      try {
+        const response = await axios.get(
+          `https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`
+        );
+        this.albumPhotos = response.data;
+      } catch {
+        console.error("Failed to fetch album photos");
+      }
+    },
+
+    clearSelectedUser() {
+      // Kullanıcı seçimlerini temizle
+      this.userTodos = [];
+      this.userPost = [];
+      this.userAlbums = [];
+      this.albumPhotos = [];
     },
   },
 });
