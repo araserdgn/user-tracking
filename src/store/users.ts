@@ -108,14 +108,6 @@ export const useGetUsers = defineStore("useGetUsers", {
       }
     },
 
-    // async getUserAlbums() {
-    //   try {
-    //     const response = await axios.get("https://jsonplaceholder.typicode.com/albums");
-    //     this.userAlbums = response.data;
-    //   } catch {
-    //     console.error("Failed to fetch user albums");
-    //   }
-    // },
     async getUserAlbums(userId: number) {
       try {
         const response = await axios.get(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`);

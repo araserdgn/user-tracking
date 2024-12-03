@@ -43,7 +43,8 @@ export default defineComponent({
   </div>
 </template>
 
-
+<!-- RESİMLERİ 4'LU EKRANA GETİRME -->
+ 
 <!-- <script lang="ts">
 import { defineComponent, onMounted } from "vue";
 import { useGetUsers } from "@/store/users";
