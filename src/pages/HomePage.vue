@@ -14,6 +14,11 @@ export default defineComponent({
       localStorage.setItem("userName", name);
       localStorage.setItem("userEmail", email);
       localStorage.setItem("userUsername", username);
+      
+      users.userDataId = String(id);
+      users.userName = name;
+      users.userEmail = email;
+      users.userSurname = username;
 
       users.getUserShowData(id); // Kullanıcıyla ilgili verileri getir
       router.push(`/users/${id}`); // Todos sayfasına yönlendir
@@ -25,7 +30,7 @@ export default defineComponent({
     });
 
     return {
-      users: users.users, // Kullanıcı verileri
+      users, 
       gotoUserData,
     };
   },
@@ -34,8 +39,8 @@ export default defineComponent({
 
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6 bg-gray-50 min-h-screen">
-    <div v-for="user in users" :key="user.id" class="bg-white shadow-md rounded-lg overflow-hidden p-6" @click="gotoUserData(user.id, user.name, user.email, user.username)">
-      <div class="flex items-center space-x-4">
+    <div v-for="user in users.users" :key="user.id" class="bg-white shadow-md rounded-lg overflow-hidden p-6" @click="gotoUserData(user.id, user.name, user.email, user.username)">
+      <div class="flex items-center space-x-4" >
         <!-- Kullanıcı Fotoğrafı -->
         <div>
           <img

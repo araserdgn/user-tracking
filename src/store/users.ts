@@ -4,6 +4,10 @@ import router from "@/router";
 
 export const useGetUsers = defineStore("useGetUsers", {
   state: () => ({
+    userDataId: '',
+    userName:'',
+    userSurname:'',
+    userEmail:'',
     users: [] as {
       id: number;
       name: string;
@@ -59,6 +63,7 @@ export const useGetUsers = defineStore("useGetUsers", {
   actions: {
     async getUsers() {
       try {
+        await router.push("/home");
         const response = await axios.get("https://jsonplaceholder.typicode.com/users");
         this.users = response.data;
       } catch {
@@ -103,12 +108,20 @@ export const useGetUsers = defineStore("useGetUsers", {
       }
     },
 
-    async getUserAlbums() {
+    // async getUserAlbums() {
+    //   try {
+    //     const response = await axios.get("https://jsonplaceholder.typicode.com/albums");
+    //     this.userAlbums = response.data;
+    //   } catch {
+    //     console.error("Failed to fetch user albums");
+    //   }
+    // },
+    async getUserAlbums(userId: number) {
       try {
-        const response = await axios.get("https://jsonplaceholder.typicode.com/albums");
-        this.userAlbums = response.data;
-      } catch {
-        console.error("Failed to fetch user albums");
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`);
+        this.userAlbums = response.data; // Dönen albümleri state'e kaydet
+      } catch (error) {
+        console.error("Error fetching albums:", error);
       }
     },
 

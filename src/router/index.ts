@@ -28,12 +28,12 @@ const routes: Array<RouteRecordRaw> = [
 
             },
             {
-                path:'/albums',
+                path:'/albums/:id',
                 name:'albums',
                 component: () => import('../pages/UserAlbum.vue'),
             },
             {
-                path:'/albums/:albumId',
+                path:'/albums/show/:albumId',
                 name:'albumPhotos',
                 component: () => import('../pages/UserAlbumPhotos.vue'),
             }

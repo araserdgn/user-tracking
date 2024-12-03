@@ -2,18 +2,22 @@
 import { defineComponent, onMounted } from "vue";
 import { useGetUsers } from "@/store/users";
 import { useRouter } from "vue-router";
+import { useRoute } from "vue-router";
+
 
 export default defineComponent({
   setup() {
     const users = useGetUsers();
     const router = useRouter();
+    const route = useRoute();
+    const userId = route.params.id;
 
     onMounted(() => {
-      users.getUserAlbums(); // Albümleri yükle
+      users.getUserAlbums(Number(userId)); // Albümleri yükle
     });
 
     const viewAlbumPhotos = (albumId: number) => {
-      router.push(`/albums/${albumId}`); // Albüm fotoğraflarına yönlendir
+      router.push(`/albums/show/${albumId}`); // Albüm fotoğraflarına yönlendir
     };
 
     return {
@@ -44,19 +48,22 @@ export default defineComponent({
 import { defineComponent, onMounted } from "vue";
 import { useGetUsers } from "@/store/users";
 import { useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 
 export default defineComponent({
   setup() {
     const users = useGetUsers();
     const router = useRouter();
+    const route = useRoute();
+    const userId = route.params.id;
 
     onMounted(() => {
-      users.getUserAlbums(); // Albümleri yükle
+      users.getUserAlbums(Number(userId)); // Albümleri yükle
       users.getAlbumPhotos(1); // İlk albümden fotoğrafları getir (örnek)
     });
 
     const viewAlbumPhotos = (albumId: number) => {
-      router.push(`/albums/${albumId}`); // Albüm fotoğraflarına yönlendir
+      router.push(`/albums/show/${albumId}`); // Albüm fotoğraflarına yönlendir
     };
 
     return {
