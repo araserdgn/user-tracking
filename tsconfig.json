@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "esnext",                             /* Modern JavaScript çıktısı için ESNext kullanılır. */
+    "module": "esnext",                             /* Module sistemini ESNext olarak ayarlar. */
+    "strict": true,                                 /* Tüm sıkı tip kontrolü ayarlarını etkinleştirir. */
+    "esModuleInterop": true,                        /* CommonJS modülleriyle uyumluluk sağlar. */
+    "moduleResolution": "node",                    /* Node.js modül çözümleme stratejisini kullanır. */
+    "resolveJsonModule": true,                     /* JSON dosyalarının import edilmesine izin verir. */
+    "skipLibCheck": true,                          /* Harici tip tanımlamalarını kontrol etmeyi atlar. */
+    "forceConsistentCasingInFileNames": true,      /* Dosya isimlerinde tutarlı büyük/küçük harf kullanımını zorunlu kılar. */
+    "jsx": "preserve",                             /* Vue JSX için preserve ayarını kullanır. */
+    "useDefineForClassFields": true,               /* ECMAScript sınıf alanlarının standart uyumlu versiyonunu kullanır. */
+    "lib": ["dom", "dom.iterable", "esnext"],      /* DOM ve modern ES kütüphaneleri desteklenir. */
+    "baseUrl": ".",                                /* İthalat yolları için proje kök dizinini belirtir. */
+    "paths": {                                     /* Vue 3 dosyaları için yollar tanımlar. */
+      "@/*": ["src/*"]
+    },
+    "allowJs": true,
+    "checkJs": false,
+    "noImplicitAny": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
+  "exclude": ["node_modules"]
+}

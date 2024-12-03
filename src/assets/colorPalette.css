@@ -1,0 +1,22 @@
+:root {
+    --primary-color:#2ecc71;
+    --secondary-color: #2ecc71;
+    --background-color: #ecf0f1;
+    --text-color: #2c3e50;
+/*    color blue*/
+    --sidebar-blue:#082f49;
+    --sidebar-logo-blue:#082f49;
+    --sidebar-menu-blue:#082f49;
+    --header-blue:#0c4a6e;
+    /*volor orange*/
+    --sidebar-orange:#A96F23;
+    --sidebar-logo-orange:#A96F23;
+    --sidebar-menu-orange:#A96F23;
+    --header-orange:#A56819;
+
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
