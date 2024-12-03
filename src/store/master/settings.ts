@@ -7,9 +7,7 @@ export const useMasterSettings = defineStore("useMasterSettings", {
         openSidebar:ref(false),
     }),
     getters: {
-        // getReceipt(state) {
-        //     return state.getProduct
-        // },
+        
     },
     actions: {
 
